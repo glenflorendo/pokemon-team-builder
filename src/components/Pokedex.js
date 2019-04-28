@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
+import Card from './Card';
 // import './css/Pokedex.css';
 
 class Pokedex extends Component {
   render() {
-    return <div>Pokédex</div>;
+    const { pokedex, entries } = this.props;
+
+    return (
+      <div className="Pokedex">
+        <div>Pokedex</div>
+        {entries.map((entry, index) => (
+          <Card pokedex={pokedex} key={index + 1} pokemon={entry} />
+        ))}
+      </div>
+    );
   }
 }
 
