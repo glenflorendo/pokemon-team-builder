@@ -51,7 +51,7 @@ class Card extends Component {
   }
 
   render() {
-    const { name, handleAddPokemon } = this.props;
+    const { name, handleRecruitPokemon } = this.props;
     const { id, picture, types, styles } = this.state;
 
     return (
@@ -79,7 +79,7 @@ class Card extends Component {
         <div className="footer">
           <div
             className="recruit"
-            onClick={e => handleAddPokemon(e, this.state)}
+            onClick={e => handleRecruitPokemon(e, this.state)}
           >
             <img
               src={`${process.env.PUBLIC_URL}/img/recruit-indicator.png`}

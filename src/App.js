@@ -17,7 +17,7 @@ class App extends Component {
 
     this.state = {
       entries: [],
-      team: new Array(6),
+      team: [],
     };
   }
 
@@ -38,21 +38,33 @@ class App extends Component {
         <Pokedex
           pokedex={this.Pokedex}
           entries={entries}
-          handleAddPokemon={this.handleAddPokemon}
+          handleRecruitPokemon={this.handleRecruitPokemon}
         />
-        <TeamViewer team={team} />
+        <TeamViewer
+          team={team}
+          handleDischargePokemon={this.handleDischargePokemon}
+        />
       </div>
     );
   }
 
-  handleAddPokemon = (event, pokemon) => {
+  handleRecruitPokemon = (event, pokemon) => {
     event.stopPropagation();
-    let team = this.state.team.concat(pokemon);
-    team.splice(0, 1);
-
-    this.setState(prevState => ({
+    const { team } = this.state;
+    team.push(pokemon);
+    if (team.length > 6) team.splice(0, 1);
+    this.setState({
       team,
-    }));
+    });
+  };
+
+  handleDischargePokemon = (event, index) => {
+    event.stopPropagation();
+    const { team } = this.state;
+    team.splice(index, 1);
+    this.setState({
+      team,
+    });
   };
 }
 
