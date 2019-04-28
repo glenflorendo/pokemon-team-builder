@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as PokeAPI from 'pokeapi-js-wrapper';
 import Header from './components/Header';
 import Pokedex from './components/Pokedex';
-import Team from './components/Team';
+import TeamViewer from './components/TeamViewer';
 import './App.css';
 
 class App extends Component {
@@ -33,7 +33,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Pokedex pokedex={this.Pokedex} entries={this.state.entries} />
-        <Team />
+        <TeamViewer />
       </div>
     );
   }
