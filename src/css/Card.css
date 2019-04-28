@@ -1,0 +1,72 @@
+.Card {
+  display: flex;
+  flex-direction: column;
+  background-color: lightblue;
+  max-width: 200px;
+  border-radius: 10px;
+  padding: 10px;
+  padding-top: 15px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.Card > * {
+  margin: 10px 0;
+}
+
+.Card .header {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin: -15px -10px 10px -10px;
+  padding: 15px 15px;
+}
+
+.Card .id {
+  border: 1px solid black;
+  margin-right: 15px;
+  padding: 4px;
+}
+
+.Card .name {
+  font-weight: 700;
+}
+
+.Card .picture {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+}
+
+.Card .picture img {
+  width: 200px;
+}
+
+.Card .types {
+  display: flex;
+  justify-content: center;
+}
+
+.Card .types span {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 4px;
+  width: 55px;
+}
+
+.Card .types span:not(:last-of-type) {
+  margin-right: 3px;
+}
+
+.Card .footer {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin: 10px -10px -10px -10px;
+  padding: 10px 0;
+}
+
+.Card .footer .recruit {
+  width: 20px;
+}

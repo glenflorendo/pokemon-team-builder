@@ -13,7 +13,6 @@ class App extends Component {
       protocol: 'https',
       versionPath: '/api/v2/',
       cache: true,
-      timeout: 5 * 1000, // 5s
     });
 
     this.state = {
@@ -22,7 +21,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.Pokedex.getPokemonsList({ limit: 964 }).then(({ count, results }) => {
+    this.Pokedex.getPokemonsList({ limit: 20 }).then(({ count, results }) => {
       this.setState({
         entries: results,
       });

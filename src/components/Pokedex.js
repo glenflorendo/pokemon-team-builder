@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Card from './Card';
-// import './css/Pokedex.css';
+import '../css/Pokedex.css';
 
 class Pokedex extends Component {
   render() {
@@ -8,9 +8,13 @@ class Pokedex extends Component {
 
     return (
       <div className="Pokedex">
-        <div>Pokedex</div>
-        {entries.map((entry, index) => (
-          <Card pokedex={pokedex} key={index + 1} pokemon={entry} />
+        {entries.map(({ name, url }, index) => (
+          <Card
+            pokedex={pokedex}
+            key={index + 1}
+            id={url.split('/')[6]}
+            name={name}
+          />
         ))}
       </div>
     );
