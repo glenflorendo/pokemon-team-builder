@@ -14,6 +14,7 @@ class Pokedex extends Component {
             key={index + 1}
             id={url.split('/')[6]}
             name={name}
+            ref={`card${index + 1}`}
           />
         ))}
       </div>

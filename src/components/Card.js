@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FastAverageColor from 'fast-average-color/dist/index.es6';
 import '../css/Card.css';
 
 const PKMN_IMG_URL =
@@ -27,6 +28,7 @@ class Card extends Component {
       // stats
       types: [],
       picture: '',
+      styles: {},
     };
   }
 
@@ -36,7 +38,11 @@ class Card extends Component {
       this.setState({
         ...pkmn,
         types: pkmn.types.reduceRight(
-          (acc, { type }) => acc.concat(type.name),
+          (acc, { type }) =>
+            acc.concat({
+              name: type.name,
+              styles: { backgroundColor: `var(--${type.name}-type)` },
+            }),
           [],
         ),
         picture: `${PKMN_IMG_URL}${this.props.id}.png`,
@@ -46,22 +52,28 @@ class Card extends Component {
 
   render() {
     const { name } = this.props;
-    const { id, picture, types } = this.state;
-
-    console.log(types);
+    const { id, picture, types, styles } = this.state;
 
     return (
-      <div className="Card">
+      <div className="Card" style={styles}>
         <div className="header">
           <span className="id">{`#${`00${id}`.slice(-3)}`}</span>
           <span className="name">{name}</span>
         </div>
         <div className="picture">
-          <img src={picture} alt={name} />
+          <img
+            src={picture}
+            alt={name}
+            onLoad={this.handleOnLoad.bind(this)}
+            crossOrigin=""
+            ref="picture"
+          />
         </div>
         <div className="types">
-          {types.map((type, index) => (
-            <span key={index}>{type}</span>
+          {types.map(({ name, styles }, index) => (
+            <span key={index} style={styles}>
+              {name}
+            </span>
           ))}
         </div>
         <div className="footer">
@@ -75,6 +87,16 @@ class Card extends Component {
       </div>
     );
   }
+
+  handleOnLoad = event => {
+    const fac = new FastAverageColor();
+    const colorInfo = fac.getColor(this.refs.picture);
+    this.setState({
+      styles: {
+        backgroundColor: colorInfo.rgb,
+      },
+    });
+  };
 }
 
 export default Card;

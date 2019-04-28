@@ -1,7 +1,6 @@
 .Card {
   display: flex;
   flex-direction: column;
-  background-color: lightblue;
   max-width: 200px;
   border-radius: 10px;
   padding: 10px;
@@ -46,10 +45,13 @@
 .Card .types {
   display: flex;
   justify-content: center;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: -1px;
 }
 
 .Card .types span {
-  border: 1px solid black;
   border-radius: 5px;
   padding: 4px;
   width: 55px;
