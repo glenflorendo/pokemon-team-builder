@@ -3,7 +3,7 @@ import '../css/Header.css';
 
 class Header extends Component {
   render() {
-    return <header className="Header">Header</header>;
+    return <header className="Header">Pokémon Team Builder</header>;
   }
 }
 
