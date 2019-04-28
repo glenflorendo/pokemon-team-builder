@@ -4,13 +4,14 @@ import '../css/Pokedex.css';
 
 class Pokedex extends Component {
   render() {
-    const { pokedex, entries } = this.props;
+    const { pokedex, entries, handleAddPokemon } = this.props;
 
     return (
       <div className="Pokedex">
         {entries.map(({ name, url }, index) => (
           <Card
             pokedex={pokedex}
+            handleAddPokemon={handleAddPokemon}
             key={index + 1}
             id={url.split('/')[6]}
             name={name}

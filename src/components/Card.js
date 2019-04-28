@@ -51,7 +51,7 @@ class Card extends Component {
   }
 
   render() {
-    const { name } = this.props;
+    const { name, handleAddPokemon } = this.props;
     const { id, picture, types, styles } = this.state;
 
     return (
@@ -77,18 +77,21 @@ class Card extends Component {
           ))}
         </div>
         <div className="footer">
-          <input
+          <div
             className="recruit"
-            type="image"
-            alt="recruit indicator"
-            src={`${process.env.PUBLIC_URL}/img/recruit-indicator.png`}
-          />
+            onClick={e => handleAddPokemon(e, this.state)}
+          >
+            <img
+              src={`${process.env.PUBLIC_URL}/img/recruit-indicator.png`}
+              alt="recruit indicator"
+            />
+          </div>
         </div>
       </div>
     );
   }
 
-  handleOnLoad = event => {
+  handleOnLoad = () => {
     const fac = new FastAverageColor();
     const colorInfo = fac.getColor(this.refs.picture);
     this.setState({

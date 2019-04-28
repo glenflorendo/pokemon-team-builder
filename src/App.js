@@ -17,6 +17,7 @@ class App extends Component {
 
     this.state = {
       entries: [],
+      team: new Array(6),
     };
   }
 
@@ -29,14 +30,30 @@ class App extends Component {
   }
 
   render() {
+    const { entries, team } = this.state;
+
     return (
       <div className="App">
         <Header />
-        <Pokedex pokedex={this.Pokedex} entries={this.state.entries} />
-        <TeamViewer />
+        <Pokedex
+          pokedex={this.Pokedex}
+          entries={entries}
+          handleAddPokemon={this.handleAddPokemon}
+        />
+        <TeamViewer team={team} />
       </div>
     );
   }
+
+  handleAddPokemon = (event, pokemon) => {
+    event.stopPropagation();
+    let team = this.state.team.concat(pokemon);
+    team.splice(0, 1);
+
+    this.setState(prevState => ({
+      team,
+    }));
+  };
 }
 
 export default App;
